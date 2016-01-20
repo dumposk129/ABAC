@@ -2,11 +2,214 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\DUMP129\Project\Android\ABAC\app\build\intermediates\incremental-classes\debug\classes.jar"
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.4.0\8ad21bf21784dacce5f2043afb97218cc377e835\bolts-applinks-1.4.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="d85e9a2f58f3646248824174c4f57cb4c8b8ee8c">
-        <dex dex="C:\Users\DUMP129\Project\Android\ABAC\app\build\intermediates\pre-dexed\debug\classes_f7d1bda6bd92667391c48ab34e2bbd46ff49cade.jar" />
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\bolts-applinks-1.4.0_d85099474c75d4e59b84156b202f0b15749f599d.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\org.igniterealtime.smack\smack-tcp\4.1.0\b5043991d7ed52da15089fcfcbca1dd862d1af42\smack-tcp-4.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b5043991d7ed52da15089fcfcbca1dd862d1af42">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\smack-tcp-4.1.0_ffa0974d71c289631bd7a9b490c39706684ae8a8.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-core\4.48\e579bd2905d0399af5029aaaf9817d5fa0ca88a5\ormlite-core-4.48.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\ormlite-core-4.48_56857c54badf5dabbd41963254f1f0001a04d522.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\de.greenrobot\eventbus\2.4.0\ddd166d01b3158d1c00576d29f7ed15c030df719\eventbus-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ddd166d01b3158d1c00576d29f7ed15c030df719">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\eventbus-2.4.0_b76a05f753cc3cbfbb96c2c66f238f358327cb42.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.5.0\4de2b4ed3445c37ec1720a7d214712e845a24636\okhttp-2.5.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\okhttp-2.5.0_c8233561e17380bd3756265f3751ad6919805f6d.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-22.2.0_e29fdcfea66baf75f4a3ec93a2ab63beccf998c2.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\org.igniterealtime.smack\smack-android-extensions\4.1.0\355b8e606f77ae354e86a84755d2dab9f7536121\smack-android-extensions-4.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="355b8e606f77ae354e86a84755d2dab9f7536121">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\smack-android-extensions-4.1.0_df89105069257e37696056d11417709c004ea1e9.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\org.jxmpp\jxmpp-core\0.4.2-beta1\14ade1a89b0f6db4fa481f9f8a721cdec69374de\jxmpp-core-0.4.2-beta1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="14ade1a89b0f6db4fa481f9f8a721cdec69374de">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\jxmpp-core-0.4.2-beta1_2244337fb6836e10d296349caac5363f01363ead.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\org.igniterealtime.smack\smack-extensions\4.1.0\b0968f9b209feb2f51d1a1e72238989271750625\smack-extensions-4.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b0968f9b209feb2f51d1a1e72238989271750625">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\smack-extensions-4.1.0_1ffd5091a302d0568a0d0dcf79cf74a2cd326beb.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0_12187085e0bc086ecab9ec2334f315e5303d5815.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\org.igniterealtime.smack\smack-resolver-minidns\4.1.0\5b8783270e55f49937492b23df34993c4e51c8d7\smack-resolver-minidns-4.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5b8783270e55f49937492b23df34993c4e51c8d7">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\smack-resolver-minidns-4.1.0_aa97939d4242b0c88b4e344e99789de07e3f3fc1.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\de.measite.minidns\minidns\0.1.7\993582d1455b93a5723d2af4b39d8679735b3550\minidns-0.1.7.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="993582d1455b93a5723d2af4b39d8679735b3550">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\minidns-0.1.7_7001d15d8c60eab4c31bfb66a59c98617cf047bc.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\org.igniterealtime.smack\smack-im\4.1.0\4b6d736ad02f64ba54f4a5712a4a453a2c3848b1\smack-im-4.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4b6d736ad02f64ba54f4a5712a4a453a2c3848b1">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\smack-im-4.1.0_a1ab9f02728829bc5f654bd2febc990faefde303.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\2.0.0-beta2\880d9e0997b2d1bfc98e0d121ced33ee5d04aac4\retrofit-2.0.0-beta2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="880d9e0997b2d1bfc98e0d121ced33ee5d04aac4">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\retrofit-2.0.0-beta2_4ddc4d418c136810804f278e674f4fe3d0170c26.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0_1657f23298d92b1337c9dd5e472308d0be2a55fc.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\okio-1.6.0_a108b324b94d38b7a0b60075e8d7ff80bf5b9dad.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\com.android.support-design-22.2.0_ff03e18e195dfc11b50108eff71ebedea354e578.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\org.jxmpp\jxmpp-util-cache\0.4.2-beta1\43e2a81f52600639daeb02ede60cc498a13614a5\jxmpp-util-cache-0.4.2-beta1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="43e2a81f52600639daeb02ede60cc498a13614a5">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\jxmpp-util-cache-0.4.2-beta1_0341130210797f2a4e757a0d599c904d7d491f16.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\org.igniterealtime.smack\smack-core\4.1.0\ad5c17dc5fe7f383118c5a3f1818b8789b697930\smack-core-4.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ad5c17dc5fe7f383118c5a3f1818b8789b697930">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\smack-core-4.1.0_14edaf5a0e969c3a1cf5df96610983204034e5f3.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_6ac5e8275dc6601fcd65f92e434f0c7e83146955.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-22.2.0_39112362acbcfc088f779273d327bb9c9f384882.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\org.igniterealtime.smack\smack-sasl-provided\4.1.0\74422a92b7bba8eb633ceecdb017530b67451731\smack-sasl-provided-4.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="74422a92b7bba8eb633ceecdb017530b67451731">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\smack-sasl-provided-4.1.0_0ff19deb98c31cb997ac479578fb35457ea3d1a5.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.4\695b63d702f505b9b916e02272e3b6381bade7f\gson-2.4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\gson-2.4_9af4c2f28fdf0f39f5a655049b15edcb35457e4d.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.parse\parse-android\1.12.0\34ca297c889cd2023074946c7097d96b30b20891\parse-android-1.12.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="34ca297c889cd2023074946c7097d96b30b20891">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\parse-android-1.12.0_1fdb8e8874aed1ab080ee26b49893200afbcc371.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\converter-gson\2.0.0-beta2\392c3d09e0f5e7087544093cc0cb23bb9c7af5fa\converter-gson-2.0.0-beta2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="392c3d09e0f5e7087544093cc0cb23bb9c7af5fa">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta2_438e31ef46544e51414a6c8205f04e0de4013b13.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.5.2\ecf534dba3a8446ce84cbb797d314763be212a68\glide-3.5.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ecf534dba3a8446ce84cbb797d314763be212a68">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\glide-3.5.2_3e859a0d356b4517ab585f86aa0d652b31889e69.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-22.2.0_28a05875056ca9866321555bae4a0491e2deeb62.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-22.2.0_beb10dbadac2ca8d3d19682ebdd7617d60bea083.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-android\4.48\afa06f539a4026c10b247386312aa67404b80a16\ormlite-android-4.48.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="afa06f539a4026c10b247386312aa67404b80a16">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\ormlite-android-4.48_03599c7a605c58144a1fe7f55e9c60e6e20332ac.jar" />
+    </item>
+    <item
+        jar="C:\Users\F0HZZ52\.gradle\caches\modules-2\files-2.1\org.igniterealtime.smack\smack-android\4.1.0\3da1ad907fe8eb0db80471b8837d3e51690fe13c\smack-android-4.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3da1ad907fe8eb0db80471b8837d3e51690fe13c">
+        <dex dex="C:\Users\F0HZZ52\AndroidStudioProjects\ABAC\app\build\intermediates\pre-dexed\debug\smack-android-4.1.0_6a04826153de03107c8420570ebc76679b221561.jar" />
     </item>
 
 </items>
