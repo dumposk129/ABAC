@@ -67,7 +67,7 @@ public class MyDealsRecyclerAdapter extends RecyclerView.Adapter<MyDealsRecycler
             String dateDealExp = dealsList.get(position).deal_expiry_date;
             if (dateDealExp != null) {
                 Date tmpDate = simpleDateFormat.parse(dateDealExp);
-                SimpleDateFormat outputDateFormat = new SimpleDateFormat("d MMM yyyy");
+                SimpleDateFormat outputDateFormat = new SimpleDateFormat("d MMM yyyy HH:mm");
                 convert = outputDateFormat.format(tmpDate);
                 holder.tvMyDealUsedOn.setText(convert);
             }

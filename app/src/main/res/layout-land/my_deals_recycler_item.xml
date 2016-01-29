@@ -82,7 +82,7 @@
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:gravity="center"
-                        android:text="Used on"
+                        android:text="Expire: "
                         android:layout_marginBottom="10dp"
                         android:textColor="@android:color/background_dark"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
