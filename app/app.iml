@@ -87,16 +87,16 @@
     <orderEntry type="jdk" jdkName="Android API 22 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="smack-android-extensions-4.1.0" level="project" />
-    <orderEntry type="library" exported="" name="smack-extensions-4.1.0" level="project" />
     <orderEntry type="library" exported="" name="okio-1.6.0" level="project" />
+    <orderEntry type="library" exported="" name="smack-extensions-4.1.0" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="jxmpp-util-cache-0.4.2-beta1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.5.0" level="project" />
     <orderEntry type="library" exported="" name="smack-tcp-4.1.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.2.0" level="project" />
-    <orderEntry type="library" exported="" name="ormlite-android-4.48" level="project" />
     <orderEntry type="library" exported="" name="bolts-tasks-1.4.0" level="project" />
+    <orderEntry type="library" exported="" name="ormlite-android-4.48" level="project" />
     <orderEntry type="library" exported="" name="jxmpp-core-0.4.2-beta1" level="project" />
     <orderEntry type="library" exported="" name="minidns-0.1.7" level="project" />
     <orderEntry type="library" exported="" name="bolts-android-1.4.0" level="project" />
