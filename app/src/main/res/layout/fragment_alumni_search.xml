@@ -22,16 +22,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvAdvSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Advanced Search"
-        android:background="@color/lightBle500"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@android:color/white"
-        android:padding="5dp"/>
-
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/alumni_search_recycler_view"

@@ -28,7 +28,6 @@ import java.util.List;
 public class JobsClassifiedFragment extends Fragment implements ClickListener {
     private RecyclerView jobsClassifiedRecyclerView;
     private SearchView searchJob;
-    private TextView tvJobsFunction;
     private MyJobsClassifiedRecyclerAdapter myJobsClassifiedRecyclerAdapter = null;
 
     @Nullable
@@ -56,15 +55,10 @@ public class JobsClassifiedFragment extends Fragment implements ClickListener {
             }
         });
 
-        tvJobsFunction = (TextView) view.findViewById(R.id.tvJobsFunction);
-
         myJobsClassifiedRecyclerAdapter = new MyJobsClassifiedRecyclerAdapter(ApplicationContext.getInstance().getContext(), null);
         myJobsClassifiedRecyclerAdapter.setMyJobsClassifiedListener(this);
         myJobsClassifiedRecyclerAdapter.sendRecyclerView(jobsClassifiedRecyclerView);
         myJobsClassifiedRecyclerAdapter.loadJobs();
-
-        // tvJobsFunction.setOnClickListener(this);
-
     }
 
     private void search(String searchText) {

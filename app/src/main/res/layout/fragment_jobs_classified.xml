@@ -22,16 +22,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvJobsFunction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Choose Job Function"
-        android:padding="5dp"
-        android:background="@color/lightBle500"
-        android:textColor="@android:color/white"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
-
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/jobs_classified_recycler_view"

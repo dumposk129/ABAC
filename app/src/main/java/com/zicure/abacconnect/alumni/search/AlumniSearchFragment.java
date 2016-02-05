@@ -21,7 +21,6 @@ public class AlumniSearchFragment extends Fragment {
     private RecyclerView alumniSearchRecyclerView;
     private MyAlumniSearchRecyclerAdapter myAlumniSearchRecyclerAdapter;
     private SearchView searchAlumni;
-    private TextView tvAdvSearch;
 
     @Nullable
     @Override
@@ -29,7 +28,6 @@ public class AlumniSearchFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_alumni_search, container, false);
         alumniSearchRecyclerView = (RecyclerView) v.findViewById(R.id.alumni_search_recycler_view);
         searchAlumni = (SearchView) v.findViewById(R.id.searchAlumni);
-        //tvAdvSearch = (TextView) v.findViewById(R.id.tvAdvSearch);
 
         searchAlumni.setQueryHint("Company Name/Position Name");
 
