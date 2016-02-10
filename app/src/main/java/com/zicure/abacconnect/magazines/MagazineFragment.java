@@ -25,10 +25,10 @@ import com.zicure.abacconnect.api.ClickListener;
 import com.zicure.abacconnect.R;
 import com.zicure.abacconnect.api.DataLayerListener;
 import com.zicure.abacconnect.business.connect.BusinessConnections;
-import com.zicure.abacconnect.jobs.Jobss;
+import com.zicure.abacconnect.jobs.Jobs;
 import com.zicure.abacconnect.my.business.MyBusiness;
 import com.zicure.abacconnect.my.deal.Deals;
-import com.zicure.abacconnect.news.Newses;
+import com.zicure.abacconnect.news.News;
 import com.zicure.abacconnect.special.deals.SpecialDeals;
 import com.zicure.abacconnect.work.profile.WorkProfile;
 
@@ -131,10 +131,12 @@ public class MagazineFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void addMagazine(List<Magazine> magazineList) {}
+    public void addMagazine(List<Magazine> magazineList) {
+    }
 
     @Override
-    public void addYears(List<String> years) {}
+    public void addYears(List<String> years) {
+    }
 
     @Override
     public void addViewCounts(String viewCount) {
@@ -142,51 +144,79 @@ public class MagazineFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void fetchNews(List<Newses> newsesList) {}
+    public void fetchNews(List<News> newsList) {
+    }
 
     @Override
-    public void fetchSpecialDeals(List<SpecialDeals> specialDealList) {}
+    public void fetchSpecialDeals(List<SpecialDeals> specialDealList) {
+    }
 
     @Override
-    public void fetchBusiness(List<BusinessConnections> businessConnectionsList) {}
+    public void fetchBusiness(List<BusinessConnections> businessConnectionsList) {
+    }
 
     @Override
-    public void fetchAlumni(List<Alumni> usersList) {}
+    public void fetchAlumni(List<Alumni> usersList) {
+    }
 
     @Override
-    public void fetchJobs(List<Jobss> jobssList) {}
+    public void fetchJobs(List<Jobs> jobsList) {
+    }
 
     @Override
-    public void fetchMyDeal(List<Deals> dealsList) {}
+    public void fetchMyDeal(List<Deals> dealsList) {
+    }
 
     @Override
-    public void fetchMyWorkProfile(List<WorkProfile> workProfileList) {}
+    public void fetchMyWorkProfile(List<WorkProfile> workProfileList) {
+    }
 
     @Override
-    public void fetchMyBusiness(List<MyBusiness> myBusinessList) {}
+    public void fetchMyBusiness(List<MyBusiness> myBusinessList) {
+    }
 
     @Override
     public void onClickInMagazineListener(View v, int position, List<Magazine> listMagazines) {
         Magazine magazine = listMagazines.get(position);
-        magId = magazine.id;
-        magImg = magazine.magazine_thumbnail;
-        Glide.with(getActivity())
-                .load(magImg)
-                .centerCrop()
-                .into(imgViewSelectedCoverMagazine);
 
-        magIntro = magazine.magazine_intro;
-        tvSelectedMagazineMonthly.setText(magIntro);
+        if (magazine.id == null) {
 
-        magPath = magazine.magazine_path;
+        } else {
+            magId = magazine.id;
+        }
+
+        if (magazine.magazine_thumbnail == null) {
+            magImg = "";
+        } else {
+            magImg = magazine.magazine_thumbnail;
+            Glide.with(getActivity())
+                    .load(magImg)
+                    .centerCrop()
+                    .into(imgViewSelectedCoverMagazine);
+        }
+
+        if (magazine.magazine_intro == null) {
+            magIntro = "";
+        } else {
+            tvSelectedMagazineMonthly.setText(magazine.magazine_intro);
+        }
+
+        if (magazine.magazine_path == null) {
+            magPath = "";
+        } else {
+            magPath = magazine.magazine_path;
+        }
+
         updateViewCount();
     }
 
     @Override
-    public void onNewsClickListener(View v, List<Newses> listNewses, int position) {}
+    public void onNewsClickListener(View v, List<News> listNewses, int position) {
+    }
 
     @Override
-    public void onSpecialDealsClickListener(View v, List<SpecialDeals> listDeals, int position) {}
+    public void onSpecialDealsClickListener(View v, List<SpecialDeals> listDeals, int position) {
+    }
 
     @Override
     public void firstDataListener(int position, List<Magazine> magazineList) {
@@ -210,8 +240,10 @@ public class MagazineFragment extends Fragment implements View.OnClickListener, 
     }
 
     @Override
-    public void onBusinessClickListener(View v, List<BusinessConnections> listBusiness, int position) {}
+    public void onBusinessClickListener(View v, List<BusinessConnections> listBusiness, int position) {
+    }
 
     @Override
-    public void onJobsClickListener(View v, List<Jobss> listJobs, int position) {}
+    public void onJobsClickListener(View v, List<Jobs> listJobs, int position) {
+    }
 }

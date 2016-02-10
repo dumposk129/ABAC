@@ -8,9 +8,9 @@ import com.j256.ormlite.table.DatabaseTable;
  */
 
 @DatabaseTable(tableName = "news")
-public class Newses {
+public class News {
 
-    public Newses() {
+    public News() {
     }
 
     @DatabaseField(generatedId = true, columnName = "id")

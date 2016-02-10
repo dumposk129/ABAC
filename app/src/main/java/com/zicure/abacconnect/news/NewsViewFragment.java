@@ -20,45 +20,61 @@ import java.util.List;
  */
 public class NewsViewFragment extends Fragment {
     private ImageView imgViewNewsView;
-    private TextView tvNewsViewDetailNewsTopic, tvNewsViewDetailNewsIntro, tvNewsViewDetailNewsBody;
-    private String imgUrl, txtNewsViewDetailNewsTopic, txtNewsViewDetailNewsIntro, txtNewsViewDetailNewsBody;
+    private TextView tvNewsViewNewsTopic, tvNewsViewNewsIntro, tvNewsViewNewsBody;
     private View v;
-    private List<Newses> newsesList;
+    private List<News> newsList;
     private int position;
 
-    public NewsViewFragment(View v, List<Newses> listNewses, int position) {
+    public NewsViewFragment(View v, List<News> listNewses, int position) {
         this.v = v;
-        this.newsesList = listNewses;
+        this.newsList = listNewses;
         this.position = position;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.news_view, container, false);
+        return inflater.inflate(R.layout.fragment_news_view, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         imgViewNewsView = (ImageView) view.findViewById(R.id.imgViewNewsView);
-        tvNewsViewDetailNewsTopic = (TextView) view.findViewById(R.id.newsViewDetailNewsTopic);
-        tvNewsViewDetailNewsIntro = (TextView) view.findViewById(R.id.newsViewDetailNewsIntro);
-        tvNewsViewDetailNewsBody = (TextView) view.findViewById(R.id.newsViewDetailNewsBody);
+        tvNewsViewNewsTopic = (TextView) view.findViewById(R.id.newsViewDetailNewsTopic);
+        tvNewsViewNewsIntro = (TextView) view.findViewById(R.id.newsViewDetailNewsIntro);
+        tvNewsViewNewsBody = (TextView) view.findViewById(R.id.newsViewDetailNewsBody);
 
-        imgUrl = ApiConfig.IMG_URL + newsesList.get(position).news_path;
+        setData();
+    }
 
-        Glide.with(getActivity())
-                .load(imgUrl)
-                .into(imgViewNewsView);
+    private void setData() {
+        if (newsList.get(position).news_topic == null) {
+            tvNewsViewNewsTopic.setText("");
+        } else {
+            tvNewsViewNewsTopic.setText(newsList.get(position).news_topic);
+        }
 
-        txtNewsViewDetailNewsTopic = newsesList.get(position).news_topic;
-        tvNewsViewDetailNewsTopic.setText(txtNewsViewDetailNewsTopic);
+        if (newsList.get(position).news_intro == null) {
+            tvNewsViewNewsIntro.setText("");
+        } else {
+            tvNewsViewNewsIntro.setText(newsList.get(position).news_intro);
+        }
 
-        txtNewsViewDetailNewsIntro = newsesList.get(position).news_intro;
-        tvNewsViewDetailNewsIntro.setText(txtNewsViewDetailNewsIntro);
+        if (newsList.get(position).news_body == null) {
+            tvNewsViewNewsBody.setText("");
+        } else {
+            tvNewsViewNewsBody.setText(newsList.get(position).news_body);
+        }
 
-        txtNewsViewDetailNewsBody = newsesList.get(position).news_body;
-        tvNewsViewDetailNewsBody.setText(txtNewsViewDetailNewsBody);
+        if (newsList.get(position).news_thumbnail == null) {
+
+        } else {
+            String imgUrl = ApiConfig.IMG_URL + newsList.get(position).news_path;
+            Glide.with(getActivity())
+                    .load(imgUrl)
+                    .centerCrop()
+                    .into(imgViewNewsView);
+        }
     }
 }

@@ -14,11 +14,11 @@ import com.zicure.abacconnect.alumni.search.Alumni;
 import com.zicure.abacconnect.api.DataLayer;
 import com.zicure.abacconnect.api.DataLayerListener;
 import com.zicure.abacconnect.business.connect.BusinessConnections;
-import com.zicure.abacconnect.jobs.Jobss;
+import com.zicure.abacconnect.jobs.Jobs;
 import com.zicure.abacconnect.magazines.Magazine;
 import com.zicure.abacconnect.my.business.MyBusiness;
 import com.zicure.abacconnect.my.deal.Deals;
-import com.zicure.abacconnect.news.Newses;
+import com.zicure.abacconnect.news.News;
 import com.zicure.abacconnect.special.deals.SpecialDeals;
 
 import java.text.ParseException;
@@ -43,7 +43,7 @@ public class MyWorkProfileRecyclerAdapter extends RecyclerView.Adapter<MyWorkPro
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.work_profile_recycler_item, parent, false);
+        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_work_profile_recycler_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
 
@@ -54,7 +54,11 @@ public class MyWorkProfileRecyclerAdapter extends RecyclerView.Adapter<MyWorkPro
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.workProfile = workProfileList.get(position);
 
-        holder.tvWorkProfileCompanyName.setText(workProfileList.get(position).company_name);
+        if (workProfileList.get(position).company_name == null) {
+            holder.tvWorkProfileCompanyName.setText("");
+        } else {
+            holder.tvWorkProfileCompanyName.setText(workProfileList.get(position).company_name);
+        }
 
         String convert = null;
         try {
@@ -83,7 +87,11 @@ public class MyWorkProfileRecyclerAdapter extends RecyclerView.Adapter<MyWorkPro
             e.printStackTrace();
         }
 
-        holder.tvWorkProfilePosition.setText(workProfileList.get(position).work_position);
+        if (workProfileList.get(position).work_position == null) {
+            holder.tvWorkProfilePosition.setText("");
+        } else {
+            holder.tvWorkProfilePosition.setText(workProfileList.get(position).work_position);
+        }
     }
 
     @Override
@@ -101,7 +109,7 @@ public class MyWorkProfileRecyclerAdapter extends RecyclerView.Adapter<MyWorkPro
     public void addViewCounts(String viewCount) {}
 
     @Override
-    public void fetchNews(List<Newses> newsesList) {}
+    public void fetchNews(List<News> newsList) {}
 
     @Override
     public void fetchSpecialDeals(List<SpecialDeals> specialDealList) {}
@@ -113,7 +121,7 @@ public class MyWorkProfileRecyclerAdapter extends RecyclerView.Adapter<MyWorkPro
     public void fetchAlumni(List<Alumni> usersList) {}
 
     @Override
-    public void fetchJobs(List<Jobss> jobssList) {}
+    public void fetchJobs(List<Jobs> jobsList) {}
 
     @Override
     public void fetchMyDeal(List<Deals> dealsList) {}

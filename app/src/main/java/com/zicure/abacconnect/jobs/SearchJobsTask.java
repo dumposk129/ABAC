@@ -76,7 +76,7 @@ public class SearchJobsTask extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result) {
 
         if ("searchjobs".equals(apiCurrent)) {
-            List<Jobss> jobssList = new ArrayList<>();
+            List<Jobs> jobsList = new ArrayList<>();
             JSONObject jsonResult = null;
             try {
                 jsonResult = new JSONObject(result);
@@ -87,85 +87,85 @@ public class SearchJobsTask extends AsyncTask<String, Void, String> {
 
                     JSONObject jsonObject = new JSONObject();
                     jsonObject = jsonResult.getJSONObject("Jobs");
-                    Jobss jobss = new Jobss();
+                    Jobs jobs = new Jobs();
                     if (jsonObject.isNull("id")) {
-                        jobss.id = null;
+                        jobs.id = null;
                     } else {
-                        jobss.id = Integer.parseInt(jsonObject.getString("id"));
+                        jobs.id = Integer.parseInt(jsonObject.getString("id"));
                     }
 
                     if (jsonObject.isNull("job_name")) {
-                        jobss.job_name = null;
+                        jobs.job_name = null;
                     } else {
-                        jobss.job_name = jsonObject.getString("job_name");
+                        jobs.job_name = jsonObject.getString("job_name");
                     }
 
                     if (jsonObject.isNull("job_position")) {
-                        jobss.job_position = null;
+                        jobs.job_position = null;
                     } else {
-                        jobss.job_position = jsonObject.getString("job_position");
+                        jobs.job_position = jsonObject.getString("job_position");
                     }
 
                     if (jsonObject.isNull("job_addr")) {
-                        jobss.job_addr = null;
+                        jobs.job_addr = null;
                     } else {
-                        jobss.job_addr = jsonObject.getString("job_addr");
+                        jobs.job_addr = jsonObject.getString("job_addr");
                     }
 
                     if (jsonObject.isNull("job_num")) {
-                        jobss.job_num = null;
+                        jobs.job_num = null;
                     } else {
-                        jobss.job_num = jsonObject.getString("job_num");
+                        jobs.job_num = jsonObject.getString("job_num");
                     }
 
                     if (jsonObject.isNull("job_tel")) {
-                        jobss.job_tel = null;
+                        jobs.job_tel = null;
                     } else {
-                        jobss.job_tel = jsonObject.getString("job_tel");
+                        jobs.job_tel = jsonObject.getString("job_tel");
                     }
 
                     if (jsonObject.isNull("job_responsibility")) {
-                        jobss.job_responsibility = null;
+                        jobs.job_responsibility = null;
                     } else {
-                        jobss.job_responsibility = jsonObject.getString("job_responsibility");
+                        jobs.job_responsibility = jsonObject.getString("job_responsibility");
                     }
 
                     if (jsonObject.isNull("job_qualification")) {
-                        jobss.job_qualification = jsonObject.getString("job_qualification");
+                        jobs.job_qualification = jsonObject.getString("job_qualification");
                     } else {
-                        jobss.job_qualification = jsonObject.getString("job_qualification");
+                        jobs.job_qualification = jsonObject.getString("job_qualification");
                     }
 
                     if (jsonObject.isNull("job_group_id")) {
-                        jobss.job_group_id = null;
+                        jobs.job_group_id = null;
                     } else {
-                        jobss.job_group_id = Integer.parseInt(jsonObject.getString("job_group_id"));
+                        jobs.job_group_id = Integer.parseInt(jsonObject.getString("job_group_id"));
                     }
 
                     if (jsonObject.isNull("student_id")) {
-                        jobss.student_id = null;
+                        jobs.student_id = null;
                     } else {
-                        jobss.student_id = jsonObject.getInt("student_id");
+                        jobs.student_id = jsonObject.getInt("student_id");
                     }
 
                     if (jsonObject.isNull("job_expiry_date")) {
-                        jobss.job_expiry_date = null;
+                        jobs.job_expiry_date = null;
                     } else {
-                        jobss.job_expiry_date = jsonObject.getString("job_expiry_date");
+                        jobs.job_expiry_date = jsonObject.getString("job_expiry_date");
                     }
 
                     if (jsonObject.isNull("created")) {
-                        jobss.created = null;
+                        jobs.created = null;
                     } else {
-                        jobss.created = jsonObject.getString("created");
+                        jobs.created = jsonObject.getString("created");
                     }
 
-                    jobssList.add(jobss);
+                    jobsList.add(jobs);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            asyncTaskListener.onTaskComplete("searchjobs", jobssList);
+            asyncTaskListener.onTaskComplete("searchjobs", jobsList);
         }
 
         super.onPostExecute(result);

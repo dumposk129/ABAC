@@ -1,17 +1,14 @@
 package com.zicure.abacconnect.api;
 
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.zicure.abacconnect.ApplicationContext;
 import com.zicure.abacconnect.alumni.search.Alumni;
 import com.zicure.abacconnect.alumni.search.AlumniSearchTask;
 import com.zicure.abacconnect.alumni.search.SearchTask;
 import com.zicure.abacconnect.business.connect.BusinessConnections;
 import com.zicure.abacconnect.business.connect.FetchBusinessConnectTask;
 import com.zicure.abacconnect.jobs.FetchJobsTask;
-import com.zicure.abacconnect.jobs.Jobss;
+import com.zicure.abacconnect.jobs.Jobs;
 import com.zicure.abacconnect.jobs.SearchJobsTask;
 import com.zicure.abacconnect.magazines.Magazine;
 import com.zicure.abacconnect.magazines.AddViewCountTask;
@@ -22,28 +19,18 @@ import com.zicure.abacconnect.my.business.MyBusiness;
 import com.zicure.abacconnect.my.deal.Deals;
 import com.zicure.abacconnect.my.deal.FetchMyDealTask;
 import com.zicure.abacconnect.news.AddViewCountNewsTask;
-import com.zicure.abacconnect.news.Newses;
+import com.zicure.abacconnect.news.News;
 import com.zicure.abacconnect.news.FetchNewsTask;
 import com.zicure.abacconnect.business.connect.SearchBusinessTask;
 import com.zicure.abacconnect.news.SearchNewsTask;
 import com.zicure.abacconnect.special.deals.ClaimDealTask;
 import com.zicure.abacconnect.special.deals.FetchDealsTask;
+import com.zicure.abacconnect.special.deals.SearchDealsTask;
 import com.zicure.abacconnect.special.deals.SpecialDeals;
 import com.zicure.abacconnect.work.profile.FetchMyWorkTask;
 import com.zicure.abacconnect.work.profile.WorkProfile;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 /**
  * Created by DUMP129 on 10/1/2015.
@@ -68,9 +55,9 @@ public class DataLayer implements AsyncTaskListener {
     private FetchMyWorkTask fetchMyWorkTask;
     private FetchMyBusinessTask fetchMyBusinessTask;
     private AddViewCountNewsTask addViewCountNewsTask;
+    private SearchDealsTask searchDealsTask;
 
-    private DataLayer dataLayer;
-    private AsyncTaskListener asyncTaskListener = null;
+     private AsyncTaskListener asyncTaskListener = null;
 
     public DataLayer(Context context) {
         this.context = context;
@@ -94,19 +81,19 @@ public class DataLayer implements AsyncTaskListener {
         } else if ("addViewCount".equals(action) && result != null) {
             dataLayerListener.addViewCounts((String) result);
         } else if ("fetchNews".equals(action) && result != null) {
-            dataLayerListener.fetchNews((List<Newses>) result);
+            dataLayerListener.fetchNews((List<News>) result);
         } else if ("fetchDeals".equals(action) && result != null) {
             dataLayerListener.fetchSpecialDeals((List<SpecialDeals>) result);
         } else if ("fetchBusiness".equals(action) && result != null) {
             dataLayerListener.fetchBusiness((List<BusinessConnections>) result);
         } else if ("searchnNews".equals(action) && result != null) {
-            dataLayerListener.fetchNews((List<Newses>) result);
+            dataLayerListener.fetchNews((List<News>) result);
         } else if ("searchBusiness".equals(action) && result != null) {
             dataLayerListener.fetchBusiness((List<BusinessConnections>) result);
         } else if ("fetchJobs".equals(action) && result != null) {
-            dataLayerListener.fetchJobs((List<Jobss>) result);
+            dataLayerListener.fetchJobs((List<Jobs>) result);
         } else if ("searchjobs".equals(action) && result != null) {
-            dataLayerListener.fetchJobs((List<Jobss>) result);
+            dataLayerListener.fetchJobs((List<Jobs>) result);
         } else if ("searchAlumni".equals(action) && result != null) {
             dataLayerListener.fetchAlumni((List<Alumni>) result);
         } else if ("fetchAlumni".equals(action) && result != null) {
@@ -119,6 +106,8 @@ public class DataLayer implements AsyncTaskListener {
             dataLayerListener.fetchMyBusiness((List<MyBusiness>) result);
         } else if ("countviewnew".equals(action) && result != null) {
             dataLayerListener.addViewCounts((String) result);
+        } else if ("searchDeal".equals(action) && result != null) {
+            dataLayerListener.fetchSpecialDeals((List<SpecialDeals>) result);
         }
     }
 
@@ -236,5 +225,11 @@ public class DataLayer implements AsyncTaskListener {
         fetchMyBusinessTask = new FetchMyBusinessTask();
         fetchMyBusinessTask.setAsyncTaskListener(this);
         fetchMyBusinessTask.execute("mybusiness", Integer.toString(userId));
+    }
+
+    public void searchDeals(String searchText) {
+        searchDealsTask = new SearchDealsTask();
+        searchDealsTask.setAsyncTaskListener(this);
+        searchDealsTask.execute("searchDeal", searchText);
     }
 }

@@ -18,7 +18,7 @@ import com.zicure.abacconnect.business.connect.BusinessConnections;
 import com.zicure.abacconnect.magazines.Magazine;
 import com.zicure.abacconnect.my.business.MyBusiness;
 import com.zicure.abacconnect.my.deal.Deals;
-import com.zicure.abacconnect.news.Newses;
+import com.zicure.abacconnect.news.News;
 import com.zicure.abacconnect.special.deals.SpecialDeals;
 import com.zicure.abacconnect.work.profile.WorkProfile;
 
@@ -36,21 +36,21 @@ public class MyJobsClassifiedRecyclerAdapter extends RecyclerView.Adapter<MyJobs
     private ClickListener clickListener = null;
     private int position;
     private Context mContext;
-    private List<Jobss> jobssList = null;
+    private List<Jobs> jobsList = null;
     private MyJobsClassifiedRecyclerAdapter myJobsClassifiedRecyclerAdapter = null;
 
     public void setMyJobsClassifiedListener(ClickListener clickListener) {
         this.clickListener = clickListener;
     }
 
-    public MyJobsClassifiedRecyclerAdapter(Context context, List<Jobss> jobssList) {
-        this.jobssList = jobssList;
+    public MyJobsClassifiedRecyclerAdapter(Context context, List<Jobs> jobsList) {
+        this.jobsList = jobsList;
         this.mContext = context;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.jobs_classified_recycler_item, parent, false);
+        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_jobs_classified_recycler_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
 
@@ -59,17 +59,36 @@ public class MyJobsClassifiedRecyclerAdapter extends RecyclerView.Adapter<MyJobs
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.jobss = jobssList.get(position);
+        holder.jobs = jobsList.get(position);
 
-        holder.tvJobsPositionName.setText(jobssList.get(position).job_position);
-        holder.tvJobsCompanyName.setText(jobssList.get(position).job_name); // Company Name
-        holder.tvJobsAddress.setText(jobssList.get(position).job_addr);
-        holder.tvJobsPosition.setText(jobssList.get(position).job_num);
+        if (jobsList.get(position).job_position == null) {
+            holder.tvJobsPositionName.setText("");
+        } else {
+            holder.tvJobsPositionName.setText(jobsList.get(position).job_position);
+        }
+
+        if (jobsList.get(position).job_name == null) {
+            holder.tvJobsCompanyName.setText("");
+        } else {
+            holder.tvJobsCompanyName.setText(jobsList.get(position).job_name); // Company Name
+        }
+
+        if (jobsList.get(position).job_addr == null) {
+            holder.tvJobsAddress.setText("");
+        } else {
+            holder.tvJobsAddress.setText(jobsList.get(position).job_addr);
+        }
+
+        if (jobsList.get(position).job_num == null) {
+            holder.tvJobsPosition.setText("");
+        } else {
+            holder.tvJobsPosition.setText(jobsList.get(position).job_num);
+        }
 
         String convert = null;
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String dateCreated = jobssList.get(position).created;
+            String dateCreated = jobsList.get(position).created;
             if (dateCreated != null) {
                 Date tmpDate = simpleDateFormat.parse(dateCreated);
                 SimpleDateFormat outputDateFormat = new SimpleDateFormat("d MMM yyyy");
@@ -83,7 +102,7 @@ public class MyJobsClassifiedRecyclerAdapter extends RecyclerView.Adapter<MyJobs
 
     @Override
     public int getItemCount() {
-        return jobssList.size();
+        return jobsList.size();
     }
 
     @Override
@@ -91,7 +110,7 @@ public class MyJobsClassifiedRecyclerAdapter extends RecyclerView.Adapter<MyJobs
     }
 
     @Override
-    public void onNewsClickListener(View v, List<Newses> listNewses, int position) {
+    public void onNewsClickListener(View v, List<News> listNewses, int position) {
     }
 
     @Override
@@ -107,7 +126,7 @@ public class MyJobsClassifiedRecyclerAdapter extends RecyclerView.Adapter<MyJobs
     }
 
     @Override
-    public void onJobsClickListener(View v, List<Jobss> listJobs, int position) {
+    public void onJobsClickListener(View v, List<Jobs> listJobs, int position) {
         if (clickListener != null) {
             clickListener.onJobsClickListener(v, listJobs, position);
         }
@@ -115,7 +134,7 @@ public class MyJobsClassifiedRecyclerAdapter extends RecyclerView.Adapter<MyJobs
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tvJobsPositionName, tvJobsCompanyName, tvJobsAddress, tvJobsPosition, tvJobsDate;
-        public Jobss jobss;
+        public Jobs jobs;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -131,7 +150,7 @@ public class MyJobsClassifiedRecyclerAdapter extends RecyclerView.Adapter<MyJobs
                 public void onClick(View v) {
                     if (clickListener != null) {
                         position = getAdapterPosition();
-                        clickListener.onJobsClickListener(v, jobssList, position);
+                        clickListener.onJobsClickListener(v, jobsList, position);
                     }
                 }
             });
@@ -163,7 +182,7 @@ public class MyJobsClassifiedRecyclerAdapter extends RecyclerView.Adapter<MyJobs
     }
 
     @Override
-    public void fetchNews(List<Newses> newsesList) {
+    public void fetchNews(List<News> newsList) {
     }
 
     @Override
@@ -179,8 +198,8 @@ public class MyJobsClassifiedRecyclerAdapter extends RecyclerView.Adapter<MyJobs
     }
 
     @Override
-    public void fetchJobs(List<Jobss> jobssList) {
-        myJobsClassifiedRecyclerAdapter = new MyJobsClassifiedRecyclerAdapter(ApplicationContext.getInstance().getContext(), jobssList);
+    public void fetchJobs(List<Jobs> jobsList) {
+        myJobsClassifiedRecyclerAdapter = new MyJobsClassifiedRecyclerAdapter(ApplicationContext.getInstance().getContext(), jobsList);
         myJobsClassifiedRecyclerAdapter.setMyJobsClassifiedListener(this);
         recyclerViewJobs.setLayoutManager(new LinearLayoutManager(ApplicationContext.getInstance().getContext()));
         recyclerViewJobs.setAdapter(myJobsClassifiedRecyclerAdapter);

@@ -15,11 +15,11 @@ import com.zicure.abacconnect.alumni.search.Alumni;
 import com.zicure.abacconnect.api.ApiConfig;
 import com.zicure.abacconnect.api.DataLayer;
 import com.zicure.abacconnect.api.DataLayerListener;
-import com.zicure.abacconnect.jobs.Jobss;
+import com.zicure.abacconnect.jobs.Jobs;
 import com.zicure.abacconnect.magazines.Magazine;
 import com.zicure.abacconnect.my.business.MyBusiness;
 import com.zicure.abacconnect.my.deal.Deals;
-import com.zicure.abacconnect.news.Newses;
+import com.zicure.abacconnect.news.News;
 import com.zicure.abacconnect.special.deals.SpecialDeals;
 import com.zicure.abacconnect.work.profile.WorkProfile;
 
@@ -42,7 +42,7 @@ public class BusinessViewImgRecyclerAdapter extends RecyclerView.Adapter<Busines
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.business_view_recycler_item, parent, false);
+        View itemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_business_view_recycler_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(itemLayout);
 
@@ -53,11 +53,15 @@ public class BusinessViewImgRecyclerAdapter extends RecyclerView.Adapter<Busines
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.businessConnections = businessConnectionsList.get(position);
 
-        String imgUrl = ApiConfig.IMG_URL + businessConnectionsList.get(position).business_thumbnail;
-        Glide.with(ApplicationContext.getInstance().getContext())
-                .load(imgUrl)
-                .centerCrop()
-                .into(holder.rvImgViewBusinessView);
+        if (businessConnectionsList.get(position).business_thumbnail == null) {
+            holder.rvImgViewBusinessView.setImageResource(R.mipmap.ic_profile_128);
+        } else {
+            String imgUrl = ApiConfig.IMG_URL + businessConnectionsList.get(position).business_thumbnail;
+            Glide.with(ApplicationContext.getInstance().getContext())
+                    .load(imgUrl)
+                    .centerCrop()
+                    .into(holder.rvImgViewBusinessView);
+        }
     }
 
     @Override
@@ -75,7 +79,7 @@ public class BusinessViewImgRecyclerAdapter extends RecyclerView.Adapter<Busines
     public void addViewCounts(String viewCount) {}
 
     @Override
-    public void fetchNews(List<Newses> newsesList) {}
+    public void fetchNews(List<News> newsList) {}
 
     @Override
     public void fetchSpecialDeals(List<SpecialDeals> specialDealList) {}
@@ -83,7 +87,7 @@ public class BusinessViewImgRecyclerAdapter extends RecyclerView.Adapter<Busines
     @Override
     public void fetchBusiness(List<BusinessConnections> businessConnectionsList) {
         businessViewImgRecyclerAdapter = new BusinessViewImgRecyclerAdapter(ApplicationContext.getInstance().getContext(), businessConnectionsList);
-        recyclerViewBusiness.setLayoutManager(new LinearLayoutManager(ApplicationContext.getInstance().getContext()));
+        recyclerViewBusiness.setLayoutManager(new LinearLayoutManager(ApplicationContext.getInstance().getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerViewBusiness.setAdapter(businessViewImgRecyclerAdapter);
     }
 
@@ -91,7 +95,7 @@ public class BusinessViewImgRecyclerAdapter extends RecyclerView.Adapter<Busines
     public void fetchAlumni(List<Alumni> usersList) {}
 
     @Override
-    public void fetchJobs(List<Jobss> jobssList) {}
+    public void fetchJobs(List<Jobs> jobsList) {}
 
     @Override
     public void fetchMyDeal(List<Deals> dealsList) {}

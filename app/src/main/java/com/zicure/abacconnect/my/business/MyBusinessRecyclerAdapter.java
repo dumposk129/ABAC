@@ -14,10 +14,10 @@ import com.zicure.abacconnect.alumni.search.Alumni;
 import com.zicure.abacconnect.api.DataLayer;
 import com.zicure.abacconnect.api.DataLayerListener;
 import com.zicure.abacconnect.business.connect.BusinessConnections;
-import com.zicure.abacconnect.jobs.Jobss;
+import com.zicure.abacconnect.jobs.Jobs;
 import com.zicure.abacconnect.magazines.Magazine;
 import com.zicure.abacconnect.my.deal.Deals;
-import com.zicure.abacconnect.news.Newses;
+import com.zicure.abacconnect.news.News;
 import com.zicure.abacconnect.special.deals.SpecialDeals;
 import com.zicure.abacconnect.work.profile.WorkProfile;
 
@@ -43,7 +43,7 @@ public class MyBusinessRecyclerAdapter extends RecyclerView.Adapter<MyBusinessRe
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_business_recycler_item, parent, false);
+        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_my_business_recycler_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
 
@@ -52,16 +52,56 @@ public class MyBusinessRecyclerAdapter extends RecyclerView.Adapter<MyBusinessRe
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+        String businessStreetAddress = null, businessLocalityNameEng = null, businessDistrictNameEng = null,
+                businessProvinceNameEng = null, businessZipcode = null;
+
         holder.myBusiness = myBusinessList.get(position);
 
-        holder.tvMyBusinessCompany.setText(myBusinessList.get(position).company_name);
+        if (myBusinessList.get(position).company_name == null) {
+            holder.tvMyBusinessCompany.setText("");
+        } else {
+            holder.tvMyBusinessCompany.setText(myBusinessList.get(position).company_name);
+        }
 
-        String myBusinessAddress = myBusinessList.get(position).street_address + " " + myBusinessList.get(position).locality_name_eng
-                + " " + myBusinessList.get(position).district_name_eng + " " + myBusinessList.get(position).province_name_eng
-                + " " + myBusinessList.get(position).zipcode;
-        holder.tvMyBusinessAddress.setText(myBusinessAddress);
+        if (myBusinessList.get(position).long_description == null) {
+            holder.tvMyBusinessDescription.setText("");
+        } else {
+            holder.tvMyBusinessDescription.setText(myBusinessList.get(position).long_description);
+        }
 
-        holder.tvMyBusinessProduct.setText(myBusinessList.get(position).long_description);
+        if (myBusinessList.get(position).street_address == null) {
+            businessStreetAddress = "";
+        } else {
+            businessStreetAddress = myBusinessList.get(position).street_address;
+        }
+
+        if (myBusinessList.get(position).locality_name_eng == null) {
+            businessLocalityNameEng = "";
+        } else {
+            businessLocalityNameEng = myBusinessList.get(position).locality_name_eng;
+        }
+
+        if (myBusinessList.get(position).district_name_eng == null) {
+            businessDistrictNameEng = "";
+        } else {
+            businessDistrictNameEng = myBusinessList.get(position).district_name_eng;
+        }
+
+        if (myBusinessList.get(position).province_name_eng == null) {
+            businessProvinceNameEng = "";
+        } else {
+            businessProvinceNameEng = myBusinessList.get(position).province_name_eng;
+        }
+
+        if (myBusinessList.get(position).zipcode == null) {
+            businessZipcode = "";
+        } else {
+            businessZipcode = myBusinessList.get(position).zipcode;
+        }
+
+        String businessAddress = businessStreetAddress + " " + businessLocalityNameEng
+                + " " + businessDistrictNameEng + " " + businessProvinceNameEng + " " + businessZipcode;
+        holder.tvMyBusinessAddress.setText(businessAddress);
 
         String convert = null;
         try {
@@ -96,7 +136,7 @@ public class MyBusinessRecyclerAdapter extends RecyclerView.Adapter<MyBusinessRe
     }
 
     @Override
-    public void fetchNews(List<Newses> newsesList) {
+    public void fetchNews(List<News> newsList) {
     }
 
     @Override
@@ -112,7 +152,7 @@ public class MyBusinessRecyclerAdapter extends RecyclerView.Adapter<MyBusinessRe
     }
 
     @Override
-    public void fetchJobs(List<Jobss> jobssList) {
+    public void fetchJobs(List<Jobs> jobsList) {
     }
 
     @Override
@@ -131,7 +171,7 @@ public class MyBusinessRecyclerAdapter extends RecyclerView.Adapter<MyBusinessRe
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvMyBusinessCompany, tvMyBusinessAddress, tvMyBusinessProduct, tvMyBusinessDate;
+        public TextView tvMyBusinessCompany, tvMyBusinessAddress, tvMyBusinessDescription, tvMyBusinessDate;
         public MyBusiness myBusiness;
 
         public ViewHolder(View itemView) {
@@ -139,7 +179,7 @@ public class MyBusinessRecyclerAdapter extends RecyclerView.Adapter<MyBusinessRe
 
             tvMyBusinessCompany = (TextView) itemView.findViewById(R.id.tvMyBusinessCompany);
             tvMyBusinessAddress = (TextView) itemView.findViewById(R.id.tvMyBusinessAddress);
-            tvMyBusinessProduct = (TextView) itemView.findViewById(R.id.tvMyBusinessProduct);
+            tvMyBusinessDescription = (TextView) itemView.findViewById(R.id.tvMyBusinessDescription);
             tvMyBusinessDate = (TextView) itemView.findViewById(R.id.tvMyBusinessDate);
         }
     }

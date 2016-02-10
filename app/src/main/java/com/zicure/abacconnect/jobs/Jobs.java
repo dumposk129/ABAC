@@ -7,9 +7,9 @@ import com.j256.ormlite.table.DatabaseTable;
  * Created by DUMP129 on 11/11/2015.
  */
 @DatabaseTable(tableName = "jobs")
-public class Jobss {
+public class Jobs {
 
-    public Jobss() {
+    public Jobs() {
     }
 
     @DatabaseField(generatedId = true, columnName = "id")

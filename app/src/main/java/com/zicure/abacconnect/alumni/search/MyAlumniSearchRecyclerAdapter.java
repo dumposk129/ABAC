@@ -13,11 +13,11 @@ import com.zicure.abacconnect.R;
 import com.zicure.abacconnect.api.DataLayer;
 import com.zicure.abacconnect.api.DataLayerListener;
 import com.zicure.abacconnect.business.connect.BusinessConnections;
-import com.zicure.abacconnect.jobs.Jobss;
+import com.zicure.abacconnect.jobs.Jobs;
 import com.zicure.abacconnect.magazines.Magazine;
 import com.zicure.abacconnect.my.business.MyBusiness;
 import com.zicure.abacconnect.my.deal.Deals;
-import com.zicure.abacconnect.news.Newses;
+import com.zicure.abacconnect.news.News;
 import com.zicure.abacconnect.special.deals.SpecialDeals;
 import com.zicure.abacconnect.work.profile.WorkProfile;
 
@@ -43,7 +43,7 @@ public class MyAlumniSearchRecyclerAdapter extends RecyclerView.Adapter<MyAlumni
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.alumni_search_recycler_item, parent, false);
+        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_alumni_search_recycler_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
 
@@ -54,7 +54,11 @@ public class MyAlumniSearchRecyclerAdapter extends RecyclerView.Adapter<MyAlumni
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.alumni = alumniList.get(position);
 
-        holder.tvAlumniCompanyName.setText(alumniList.get(position).company_name);
+        if (alumniList.get(position).company_name == null) {
+            holder.tvAlumniCompanyName.setText("");
+        } else {
+            holder.tvAlumniCompanyName.setText(alumniList.get(position).company_name);
+        }
 
         String convert = null;
         try {
@@ -83,11 +87,35 @@ public class MyAlumniSearchRecyclerAdapter extends RecyclerView.Adapter<MyAlumni
             e.printStackTrace();
         }
 
-        holder.tvAlumniWorkPosition.setText(alumniList.get(position).work_position);
-        holder.tvAlumniFirstName.setText(alumniList.get(position).user_firstname);
-        holder.tvAlumniLastName.setText(alumniList.get(position).user_lastname);
-        holder.tvAlumniStdId.setText(alumniList.get(position).user_username);
-        holder.tvAlumniEmail.setText(alumniList.get(position).user_email);
+        if (alumniList.get(position).work_position == null) {
+            holder.tvAlumniWorkPosition.setText("");
+        } else {
+            holder.tvAlumniWorkPosition.setText(alumniList.get(position).work_position);
+        }
+
+        if (alumniList.get(position).user_firstname == null) {
+            holder.tvAlumniFirstName.setText("");
+        } else {
+            holder.tvAlumniFirstName.setText(alumniList.get(position).user_firstname);
+        }
+
+        if (alumniList.get(position).user_lastname == null) {
+            holder.tvAlumniLastName.setText("");
+        } else {
+            holder.tvAlumniLastName.setText(alumniList.get(position).user_lastname);
+        }
+
+        if (alumniList.get(position).user_username == null) {
+            holder.tvAlumniStdId.setText("");
+        } else {
+            holder.tvAlumniStdId.setText(alumniList.get(position).user_username);
+        }
+
+        if (alumniList.get(position).user_email == null) {
+            holder.tvAlumniEmail.setText("");
+        } else {
+            holder.tvAlumniEmail.setText(alumniList.get(position).user_email);
+        }
     }
 
     @Override
@@ -105,7 +133,7 @@ public class MyAlumniSearchRecyclerAdapter extends RecyclerView.Adapter<MyAlumni
     public void addViewCounts(String viewCount) {}
 
     @Override
-    public void fetchNews(List<Newses> newsesList) {}
+    public void fetchNews(List<News> newsList) {}
 
     @Override
     public void fetchSpecialDeals(List<SpecialDeals> specialDealList) {}
@@ -121,7 +149,7 @@ public class MyAlumniSearchRecyclerAdapter extends RecyclerView.Adapter<MyAlumni
     }
 
     @Override
-    public void fetchJobs(List<Jobss> jobssList) {}
+    public void fetchJobs(List<Jobs> jobsList) {}
 
     @Override
     public void fetchMyDeal(List<Deals> dealsList) {}

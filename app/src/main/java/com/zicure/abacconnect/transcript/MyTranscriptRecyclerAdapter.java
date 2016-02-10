@@ -25,7 +25,7 @@ public class MyTranscriptRecyclerAdapter extends RecyclerView.Adapter<MyTranscri
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.transcript_recycler_item, parent, false);
+        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_transcript_recycler_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
 

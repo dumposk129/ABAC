@@ -19,7 +19,7 @@ import com.zicure.abacconnect.api.DataLayer;
 import com.zicure.abacconnect.api.DataLayerListener;
 import com.zicure.abacconnect.api.ClickListener;
 import com.zicure.abacconnect.business.connect.BusinessConnections;
-import com.zicure.abacconnect.jobs.Jobss;
+import com.zicure.abacconnect.jobs.Jobs;
 import com.zicure.abacconnect.magazines.Magazine;
 import com.zicure.abacconnect.my.business.MyBusiness;
 import com.zicure.abacconnect.my.deal.Deals;
@@ -33,7 +33,7 @@ import java.util.List;
  */
 public class MyNewsRecyclerAdapter extends RecyclerView.Adapter<MyNewsRecyclerAdapter.ViewHolder> implements DataLayerListener, ClickListener {
     private Context mContext;
-    private List<Newses> newsesList = null;
+    private List<News> newsList = null;
     private DataLayer dataLayer = null;
     private RecyclerView recyclerViewNews = null;
     private ClickListener clickListener = null;
@@ -44,14 +44,14 @@ public class MyNewsRecyclerAdapter extends RecyclerView.Adapter<MyNewsRecyclerAd
         this.clickListener = clickListener;
     }
 
-    public MyNewsRecyclerAdapter(Context mContext, List<Newses> newsesList) {
-        this.newsesList = newsesList;
+    public MyNewsRecyclerAdapter(Context mContext, List<News> newsList) {
+        this.newsList = newsList;
         this.mContext = mContext;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_recycler_item, parent, false);
+        View itemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_news_recycler_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(itemLayout);
 
@@ -60,21 +60,39 @@ public class MyNewsRecyclerAdapter extends RecyclerView.Adapter<MyNewsRecyclerAd
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.newses = newsesList.get(position);
+        holder.news = newsList.get(position);
 
-        holder.tvNewsTitle.setText(newsesList.get(position).news_topic);
-        holder.tvNewsDetail.setText(newsesList.get(position).news_intro);
-        holder.tvNewsView.setText(newsesList.get(position).view_count);
+        if (newsList.get(position).news_topic == null) {
+            holder.tvNewsTitle.setText("");
+        } else {
+            holder.tvNewsTitle.setText(newsList.get(position).news_topic);
+        }
 
-        String imgUrl = ApiConfig.IMG_URL + newsesList.get(position).news_thumbnail;
-        Glide.with(ApplicationContext.getInstance().getContext())
-                .load(imgUrl)
-                .into(holder.imgViewNews);
+        if (newsList.get(position).news_intro == null) {
+            holder.tvNewsDetail.setText("");
+        } else {
+            holder.tvNewsDetail.setText(newsList.get(position).news_intro);
+        }
+
+        if (newsList.get(position).view_count == null) {
+            holder.tvNewsView.setText("");
+        } else {
+            holder.tvNewsView.setText(newsList.get(position).view_count);
+        }
+
+        if (newsList.get(position).news_thumbnail == null) {
+
+        } else {
+            String imgUrl = ApiConfig.IMG_URL + newsList.get(position).news_thumbnail;
+            Glide.with(ApplicationContext.getInstance().getContext())
+                    .load(imgUrl)
+                    .into(holder.imgViewNews);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return newsesList.size();
+        return newsList.size();
     }
 
     @Override
@@ -87,8 +105,8 @@ public class MyNewsRecyclerAdapter extends RecyclerView.Adapter<MyNewsRecyclerAd
     public void addViewCounts(String viewCount) {}
 
     @Override
-    public void fetchNews(List<Newses> newsesList) {
-        myNewsRecyclerAdapter = new MyNewsRecyclerAdapter(ApplicationContext.getInstance().getContext(), newsesList);
+    public void fetchNews(List<News> newsList) {
+        myNewsRecyclerAdapter = new MyNewsRecyclerAdapter(ApplicationContext.getInstance().getContext(), newsList);
         myNewsRecyclerAdapter.setMyNewsListener(this);
         recyclerViewNews.setLayoutManager(new LinearLayoutManager(ApplicationContext.getInstance().getContext()));
         recyclerViewNews.setAdapter(myNewsRecyclerAdapter);
@@ -104,7 +122,7 @@ public class MyNewsRecyclerAdapter extends RecyclerView.Adapter<MyNewsRecyclerAd
     public void fetchAlumni(List<Alumni> usersList) {}
 
     @Override
-    public void fetchJobs(List<Jobss> jobssList) {}
+    public void fetchJobs(List<Jobs> jobsList) {}
 
     @Override
     public void fetchMyDeal(List<Deals> dealsList) {}
@@ -119,7 +137,7 @@ public class MyNewsRecyclerAdapter extends RecyclerView.Adapter<MyNewsRecyclerAd
     public void onClickInMagazineListener(View v, int position, List<Magazine> listMagazines) {}
 
     @Override
-    public void onNewsClickListener(View v, List<Newses> listNewses, int position) {
+    public void onNewsClickListener(View v, List<News> listNewses, int position) {
         if (clickListener != null) {
             clickListener.onNewsClickListener(v, listNewses, position);
         }
@@ -135,12 +153,12 @@ public class MyNewsRecyclerAdapter extends RecyclerView.Adapter<MyNewsRecyclerAd
     public void onBusinessClickListener(View v, List<BusinessConnections> listBusiness, int position) {}
 
     @Override
-    public void onJobsClickListener(View v, List<Jobss> listJobs, int position) {}
+    public void onJobsClickListener(View v, List<Jobs> listJobs, int position) {}
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imgViewNews;
         public TextView tvNewsTitle, tvNewsDetail, tvNewsView;
-        public Newses newses;
+        public News news;
 
         public ViewHolder(final View itemView) {
             super(itemView);
@@ -154,7 +172,7 @@ public class MyNewsRecyclerAdapter extends RecyclerView.Adapter<MyNewsRecyclerAd
                 public void onClick(View v) {
                     if (clickListener != null) {
                         position = getAdapterPosition();
-                        clickListener.onNewsClickListener(v, newsesList, position);
+                        clickListener.onNewsClickListener(v, newsList, position);
                     }
                 }
             });

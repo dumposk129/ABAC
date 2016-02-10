@@ -24,14 +24,11 @@ import java.util.List;
  * Created by DUMP129 on 10/27/2015.
  */
 public class BusinessViewFragment extends Fragment {
-    private TextView tvBusinessViewPositionName, tvBusinessViewCompanyName, tvBusinessViewAddressName, tvBusinessViewProductDetail,
+    private TextView tvBusinessViewDescription, tvBusinessViewCompanyName, tvBusinessViewAddressName, tvBusinessViewProductDetail,
             tvBusinessViewContactName, tvBusinessViewContactPosition, tvBusinessViewContactPhone, tvBusinessViewDate;
     private ImageView imgViewBusinessViewContact;
     private RecyclerView rvBusinessViewImg;
     private BusinessViewImgRecyclerAdapter businessViewImgRecyclerAdapter = null;
-    private String businessCompanyName, businessPositionName, businessAddress, businessViewContactName, businessViewContactPosition,
-            businessViewContactPhone;
-
     private View v;
     private List<BusinessConnections> businessConnectionsList;
     private int position;
@@ -45,7 +42,7 @@ public class BusinessViewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.business_view, container, false);
+        return inflater.inflate(R.layout.fragment_business_view, container, false);
     }
 
     @Override
@@ -53,7 +50,7 @@ public class BusinessViewFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tvBusinessViewCompanyName = (TextView) view.findViewById(R.id.tvBusinessViewCompanyName);
-        tvBusinessViewPositionName = (TextView) view.findViewById(R.id.tvBusinessViewPositionName);
+        tvBusinessViewDescription = (TextView) view.findViewById(R.id.tvBusinessViewPositionName);
         tvBusinessViewAddressName = (TextView) view.findViewById(R.id.tvBusinessViewAddressName);
         tvBusinessViewProductDetail = (TextView) view.findViewById(R.id.tvBusinessViewProductDetail);
         tvBusinessViewContactName = (TextView) view.findViewById(R.id.tvBusinessViewContactName);
@@ -74,15 +71,53 @@ public class BusinessViewFragment extends Fragment {
     }
 
     private void setData() {
-        businessCompanyName = businessConnectionsList.get(position).company_name;
-        tvBusinessViewCompanyName.setText(businessCompanyName);
+        String businessStreetAddress = null, businessLocalityNameEng = null, businessDistrictNameEng = null,
+                businessProvinceNameEng = null, businessZipcode = null;
 
-        businessPositionName = businessConnectionsList.get(position).long_description;
-        tvBusinessViewPositionName.setText(businessPositionName);
+        if (businessConnectionsList.get(position).company_name == null) {
+            tvBusinessViewCompanyName.setText("");
+        } else {
+            tvBusinessViewCompanyName.setText(businessConnectionsList.get(position).company_name);
+        }
 
-        String businessAddress = businessConnectionsList.get(position).street_address + " " + businessConnectionsList.get(position).locality_name_eng
-                + " " + businessConnectionsList.get(position).district_name_eng + " " + businessConnectionsList.get(position).province_name_eng
-                + " " + businessConnectionsList.get(position).zipcode;
+        if (businessConnectionsList.get(position).long_description == null) {
+            tvBusinessViewDescription.setText("");
+        } else {
+            tvBusinessViewDescription.setText(businessConnectionsList.get(position).long_description);
+        }
+
+        if (businessConnectionsList.get(position).street_address == null) {
+            businessStreetAddress = "";
+        } else {
+            businessStreetAddress = businessConnectionsList.get(position).street_address;
+        }
+
+        if (businessConnectionsList.get(position).locality_name_eng == null) {
+            businessLocalityNameEng = "";
+        } else {
+            businessLocalityNameEng = businessConnectionsList.get(position).locality_name_eng;
+        }
+
+        if (businessConnectionsList.get(position).district_name_eng == null) {
+            businessDistrictNameEng = "";
+        } else {
+            businessDistrictNameEng = businessConnectionsList.get(position).district_name_eng;
+        }
+
+        if (businessConnectionsList.get(position).province_name_eng == null) {
+            businessProvinceNameEng = "";
+        } else {
+            businessProvinceNameEng = businessConnectionsList.get(position).province_name_eng;
+        }
+
+        if (businessConnectionsList.get(position).zipcode == null) {
+            businessZipcode = "";
+        } else {
+            businessZipcode = businessConnectionsList.get(position).zipcode;
+        }
+
+        String businessAddress = businessStreetAddress + " " + businessLocalityNameEng
+                + " " + businessDistrictNameEng + " " + businessProvinceNameEng + " " + businessZipcode;
         tvBusinessViewAddressName.setText(businessAddress);
 
         String convert = null;
@@ -99,19 +134,32 @@ public class BusinessViewFragment extends Fragment {
             e.printStackTrace();
         }
 
-        String imgContactUrl = ApiConfig.IMG_URL + businessConnectionsList.get(position).contact_thumbnail;
-        Glide.with(ApplicationContext.getInstance().getContext())
-                .load(imgContactUrl)
-                .centerCrop()
-                .into(imgViewBusinessViewContact);
+        if (businessConnectionsList.get(position).contact_thumbnail == null) {
+            imgViewBusinessViewContact.setImageResource(R.mipmap.ic_profile_128);
+        } else {
+            String imgContactUrl = ApiConfig.IMG_URL + businessConnectionsList.get(position).contact_thumbnail;
+            Glide.with(ApplicationContext.getInstance().getContext())
+                    .load(imgContactUrl)
+                    .centerCrop()
+                    .into(imgViewBusinessViewContact);
+        }
 
-        businessViewContactName = businessConnectionsList.get(position).contact_person;
-        tvBusinessViewContactName.setText(businessViewContactName);
+        if (businessConnectionsList.get(position).contact_person == null) {
+            tvBusinessViewContactName.setText("");
+        } else {
+            tvBusinessViewContactName.setText(businessConnectionsList.get(position).contact_person);
+        }
 
-        businessViewContactPosition = businessConnectionsList.get(position).contact_position;
-        tvBusinessViewContactPosition.setText(businessViewContactPosition);
+        if (businessConnectionsList.get(position).contact_position == null) {
+            tvBusinessViewContactPosition.setText("");
+        } else {
+            tvBusinessViewContactPosition.setText(businessConnectionsList.get(position).contact_position);
+        }
 
-        businessViewContactPhone = businessConnectionsList.get(position).contact_phone;
-        tvBusinessViewContactPhone.setText(businessViewContactPhone);
+        if (businessConnectionsList.get(position).contact_phone == null) {
+            tvBusinessViewContactPhone.setText("");
+        } else {
+            tvBusinessViewContactPhone.setText(businessConnectionsList.get(position).contact_phone);
+        }
     }
 }

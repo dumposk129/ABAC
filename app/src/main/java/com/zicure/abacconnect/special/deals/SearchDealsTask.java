@@ -1,4 +1,4 @@
-package com.zicure.abacconnect.news;
+package com.zicure.abacconnect.special.deals;
 
 import android.os.AsyncTask;
 
@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by DUMP129 on 11/9/2015.
+ * Created by F0HZZ52 on 10/02/2016.
  */
-public class SearchNewsTask extends AsyncTask<String, Void, String> {
+public class SearchDealsTask extends AsyncTask<String, Void, String> {
     private String responseString = "", url = ApiConfig.API_URL, apiCurrent = "";
     private AsyncTaskListener asyncTaskListener = null;
 
@@ -71,16 +71,10 @@ public class SearchNewsTask extends AsyncTask<String, Void, String> {
         return responseString;
     }
 
-    /**
-     * This method is decode JSONObject to JSOnArray
-     * When finish call asyncTaskListener.onTaskComplete then send specific url and yearStr
-     *
-     * @return void
-     */
     @Override
     protected void onPostExecute(String result) {
-        if ("searchnNews".equals(apiCurrent)) {
-            List<News> newsList = new ArrayList<News>();
+        if ("searchDeal".equals(apiCurrent)) {
+            List<SpecialDeals> specialDealsList = new ArrayList<SpecialDeals>();
             JSONObject jsonResult = null;
             try {
                 jsonResult = new JSONObject(result);
@@ -90,71 +84,65 @@ public class SearchNewsTask extends AsyncTask<String, Void, String> {
 
                     JSONObject jsonObject = new JSONObject();
                     JSONArray jsonArray = new JSONArray();
-                    jsonArray = jsonResult.getJSONArray("News");
+                    jsonArray = jsonResult.getJSONArray("Deals");
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        News news = new News();
+                        SpecialDeals specialDeals = new SpecialDeals();
 
                         if (jsonArray.getJSONObject(i).isNull("id")) {
-                            news.id = null;
+                            specialDeals.id = null;
                         } else {
-                            news.id = Integer.parseInt(jsonArray.getJSONObject(i).getString("id"));
+                            specialDeals.id = Integer.parseInt(jsonArray.getJSONObject(i).getString("id"));
                         }
 
-                        if (jsonArray.getJSONObject(i).isNull("news_topic")) {
-                            news.news_topic = null;
+                        if (jsonArray.getJSONObject(i).isNull("deal_name")) {
+                            specialDeals.deal_name = null;
                         } else {
-                            news.news_topic = jsonArray.getJSONObject(i).getString("news_topic");
+                            specialDeals.deal_name = jsonArray.getJSONObject(i).getString("deal_name");
                         }
 
-                        if (jsonArray.getJSONObject(i).isNull("news_intro")) {
-                            news.news_intro = null;
+                        if (jsonArray.getJSONObject(i).isNull("deal_discount")) {
+                            specialDeals.deal_discount = null;
                         } else {
-                            news.news_intro = jsonArray.getJSONObject(i).getString("news_intro");
+                            specialDeals.deal_discount = jsonArray.getJSONObject(i).getString("deal_discount");
                         }
 
-                        if (jsonArray.getJSONObject(i).isNull("news_body")) {
-                            news.news_body = null;
+                        if (jsonArray.getJSONObject(i).isNull("deal_expiry_date")) {
+                            specialDeals.deal_expiry_date = null;
                         } else {
-                            news.news_body = jsonArray.getJSONObject(i).getString("news_body");
+                            specialDeals.deal_expiry_date = jsonArray.getJSONObject(i).getString("deal_expiry_date");
                         }
 
-                        if (jsonArray.getJSONObject(i).isNull("view_count")) {
-                            news.view_count = null;
+                        if (jsonArray.getJSONObject(i).isNull("deal_condition")) {
+                            specialDeals.deal_condition = null;
                         } else {
-                            news.view_count = jsonArray.getJSONObject(i).getString("view_count");
+                            specialDeals.deal_condition = jsonArray.getJSONObject(i).getString("deal_condition");
                         }
 
-                        if (jsonArray.getJSONObject(i).isNull("is_active")) {
-                            news.is_active = null;
+                        if (jsonArray.getJSONObject(i).isNull("deal_detail")) {
+                            specialDeals.deal_detail = null;
                         } else {
-                            news.is_active = jsonArray.getJSONObject(i).getString("is_active");
+                            specialDeals.deal_detail = jsonArray.getJSONObject(i).getString("deal_detail");
                         }
 
-                        if (jsonArray.getJSONObject(i).isNull("notify_date")) {
-                            news.notify_date = null;
+                        if (jsonArray.getJSONObject(i).isNull("deal_thumbnail")) {
+                            specialDeals.deal_thumbnail = null;
                         } else {
-                            news.notify_date = jsonArray.getJSONObject(i).getString("notify_date");
+                            specialDeals.deal_thumbnail = jsonArray.getJSONObject(i).getString("deal_thumbnail");
                         }
 
-                        if (jsonArray.getJSONObject(i).isNull("news_thumbnail")) {
-                            news.news_thumbnail = null;
+                        if (jsonArray.getJSONObject(i).isNull("deal_path")) {
+                            specialDeals.deal_path = null;
                         } else {
-                            news.news_thumbnail = jsonArray.getJSONObject(i).getString("news_thumbnail");
+                            specialDeals.deal_path = jsonArray.getJSONObject(i).getString("deal_path");
                         }
 
-                        if (jsonArray.getJSONObject(i).isNull("news_path")) {
-                            news.news_path = null;
-                        } else {
-                            news.news_path = jsonArray.getJSONObject(i).getString("news_path");
-                        }
-
-                        newsList.add(news);
+                        specialDealsList.add(specialDeals);
                     }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            asyncTaskListener.onTaskComplete("searchnNews", newsList);
+            asyncTaskListener.onTaskComplete("searchDeal", specialDealsList);
         }
         super.onPostExecute(result);
     }

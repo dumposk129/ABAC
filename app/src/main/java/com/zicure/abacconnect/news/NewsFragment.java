@@ -18,7 +18,7 @@ import com.zicure.abacconnect.api.DataLayer;
 import com.zicure.abacconnect.api.DataLayerListener;
 import com.zicure.abacconnect.api.ClickListener;
 import com.zicure.abacconnect.business.connect.BusinessConnections;
-import com.zicure.abacconnect.jobs.Jobss;
+import com.zicure.abacconnect.jobs.Jobs;
 import com.zicure.abacconnect.magazines.Magazine;
 import com.zicure.abacconnect.my.business.MyBusiness;
 import com.zicure.abacconnect.my.deal.Deals;
@@ -81,9 +81,9 @@ public class NewsFragment extends Fragment implements ClickListener, DataLayerLi
     }
 
     @Override
-    public void onNewsClickListener(View v, List<Newses> listNewses, int position) {
-        Newses newses = listNewses.get(position);
-        newsId = newses.id;
+    public void onNewsClickListener(View v, List<News> listNewses, int position) {
+        News news = listNewses.get(position);
+        newsId = news.id;
         Fragment fragment = new NewsViewFragment(v, listNewses, position);
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null);
         transaction.replace(R.id.main, fragment).commit();
@@ -109,7 +109,7 @@ public class NewsFragment extends Fragment implements ClickListener, DataLayerLi
     public void onBusinessClickListener(View v, List<BusinessConnections> listBusiness, int position) {}
 
     @Override
-    public void onJobsClickListener(View v, List<Jobss> listJobs, int position) {}
+    public void onJobsClickListener(View v, List<Jobs> listJobs, int position) {}
 
     @Override
     public void addMagazine(List<Magazine> magazineList) {}
@@ -121,7 +121,7 @@ public class NewsFragment extends Fragment implements ClickListener, DataLayerLi
     public void addViewCounts(String viewCount) {}
 
     @Override
-    public void fetchNews(List<Newses> newsesList) {}
+    public void fetchNews(List<News> newsList) {}
 
     @Override
     public void fetchSpecialDeals(List<SpecialDeals> specialDealList) {}
@@ -133,7 +133,7 @@ public class NewsFragment extends Fragment implements ClickListener, DataLayerLi
     public void fetchAlumni(List<Alumni> usersList) {}
 
     @Override
-    public void fetchJobs(List<Jobss> jobssList) {}
+    public void fetchJobs(List<Jobs> jobsList) {}
 
     @Override
     public void fetchMyDeal(List<Deals> dealsList) {}

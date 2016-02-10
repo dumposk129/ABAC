@@ -56,7 +56,7 @@ public class MyGridViewAdapter extends BaseAdapter {
         final Bitmap bmp;
         if (rowView == null) {
             LayoutInflater inflater = (LayoutInflater) (ApplicationContext.getInstance().getContext()).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView = inflater.inflate(R.layout.graduate_photo_grid_items, null);
+            rowView = inflater.inflate(R.layout.fragment_graduate_photo_grid_items, null);
             holder.tvGraduatePhoto = (TextView) rowView.findViewById(R.id.tvGraduatePhoto);
             holder.imgViewGraduatePhoto = (ImageView) rowView.findViewById(R.id.imgViewGraduatePhoto);
             rowView.setTag(holder);

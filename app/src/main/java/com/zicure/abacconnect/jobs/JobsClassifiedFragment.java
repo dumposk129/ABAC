@@ -10,14 +10,13 @@ import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.zicure.abacconnect.ApplicationContext;
 import com.zicure.abacconnect.R;
 import com.zicure.abacconnect.api.ClickListener;
 import com.zicure.abacconnect.business.connect.BusinessConnections;
 import com.zicure.abacconnect.magazines.Magazine;
-import com.zicure.abacconnect.news.Newses;
+import com.zicure.abacconnect.news.News;
 import com.zicure.abacconnect.special.deals.SpecialDeals;
 
 import java.util.List;
@@ -72,7 +71,7 @@ public class JobsClassifiedFragment extends Fragment implements ClickListener {
     public void onClickInMagazineListener(View v, int position, List<Magazine> listMagazines) {}
 
     @Override
-    public void onNewsClickListener(View v, List<Newses> listNewses, int position) {}
+    public void onNewsClickListener(View v, List<News> listNewses, int position) {}
 
     @Override
     public void onSpecialDealsClickListener(View v, List<SpecialDeals> listDeals, int position) {}
@@ -84,7 +83,7 @@ public class JobsClassifiedFragment extends Fragment implements ClickListener {
     public void onBusinessClickListener(View v, List<BusinessConnections> listBusiness, int position) {}
 
     @Override
-    public void onJobsClickListener(View v, List<Jobss> listJobs, int position) {
+    public void onJobsClickListener(View v, List<Jobs> listJobs, int position) {
         Fragment fragment = new JobsViewFragment(v, listJobs, position);
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null);
         transaction.replace(R.id.main, fragment).commit();

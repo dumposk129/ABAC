@@ -17,10 +17,10 @@ import com.zicure.abacconnect.api.ApiConfig;
 import com.zicure.abacconnect.api.DataLayer;
 import com.zicure.abacconnect.api.DataLayerListener;
 import com.zicure.abacconnect.business.connect.BusinessConnections;
-import com.zicure.abacconnect.jobs.Jobss;
+import com.zicure.abacconnect.jobs.Jobs;
 import com.zicure.abacconnect.magazines.Magazine;
 import com.zicure.abacconnect.my.business.MyBusiness;
-import com.zicure.abacconnect.news.Newses;
+import com.zicure.abacconnect.news.News;
 import com.zicure.abacconnect.special.deals.SpecialDeals;
 import com.zicure.abacconnect.work.profile.WorkProfile;
 
@@ -46,7 +46,7 @@ public class MyDealsRecyclerAdapter extends RecyclerView.Adapter<MyDealsRecycler
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_deals_recycler_item, parent, false);
+        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_my_deals_recycler_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
 
@@ -58,8 +58,17 @@ public class MyDealsRecyclerAdapter extends RecyclerView.Adapter<MyDealsRecycler
 
         holder.deals = dealsList.get(position);
 
-        holder.tvMyDealStoreName.setText(dealsList.get(position).deal_name);
-        holder.tvMyDealDiscount.setText(dealsList.get(position).deal_discount);
+        if (dealsList.get(position).deal_name == null) {
+            holder.tvMyDealStoreName.setText("");
+        } else {
+            holder.tvMyDealStoreName.setText(dealsList.get(position).deal_name);
+        }
+
+        if (dealsList.get(position).deal_discount == null) {
+            holder.tvMyDealDiscount.setText("");
+        } else {
+            holder.tvMyDealDiscount.setText(dealsList.get(position).deal_discount);
+        }
 
         String convert = null;
         try {
@@ -75,10 +84,14 @@ public class MyDealsRecyclerAdapter extends RecyclerView.Adapter<MyDealsRecycler
             e.printStackTrace();
         }
 
-        String imgUrl = ApiConfig.IMG_URL + dealsList.get(position).deal_path;
-        Glide.with(ApplicationContext.getInstance().getContext())
-                .load(imgUrl)
-                .into(holder.imgViewMyDealPromotion);
+        if (dealsList.get(position).deal_path == null) {
+
+        } else {
+            String imgUrl = ApiConfig.IMG_URL + dealsList.get(position).deal_path;
+            Glide.with(ApplicationContext.getInstance().getContext())
+                    .load(imgUrl)
+                    .into(holder.imgViewMyDealPromotion);
+        }
     }
 
     @Override
@@ -96,7 +109,7 @@ public class MyDealsRecyclerAdapter extends RecyclerView.Adapter<MyDealsRecycler
     public void addViewCounts(String viewCount) {}
 
     @Override
-    public void fetchNews(List<Newses> newsesList) {}
+    public void fetchNews(List<News> newsList) {}
 
     @Override
     public void fetchSpecialDeals(List<SpecialDeals> specialDealList) {}
@@ -108,7 +121,7 @@ public class MyDealsRecyclerAdapter extends RecyclerView.Adapter<MyDealsRecycler
     public void fetchAlumni(List<Alumni> usersList) {}
 
     @Override
-    public void fetchJobs(List<Jobss> jobssList) {}
+    public void fetchJobs(List<Jobs> jobsList) {}
 
     @Override
     public void fetchMyDeal(List<Deals> dealsList) {

@@ -80,7 +80,7 @@ public class FetchNewsTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         if ("fetchNews".equals(apiCurrent)) {
-            List<Newses> newsesList = new ArrayList<Newses>();
+            List<News> newsList = new ArrayList<News>();
             JSONObject jsonResult = null;
             try {
                 jsonResult = new JSONObject(result);
@@ -92,69 +92,69 @@ public class FetchNewsTask extends AsyncTask<String, Void, String> {
                     JSONArray jsonArray = new JSONArray();
                     jsonArray = jsonResult.getJSONArray("News");
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        Newses newses = new Newses();
+                        News news = new News();
 
                         if (jsonArray.getJSONObject(i).isNull("id")) {
-                            newses.id = null;
+                            news.id = null;
                         } else {
-                            newses.id = Integer.parseInt(jsonArray.getJSONObject(i).getString("id"));
+                            news.id = Integer.parseInt(jsonArray.getJSONObject(i).getString("id"));
                         }
 
                         if (jsonArray.getJSONObject(i).isNull("news_topic")) {
-                            newses.news_topic = null;
+                            news.news_topic = null;
                         } else {
-                            newses.news_topic = jsonArray.getJSONObject(i).getString("news_topic");
+                            news.news_topic = jsonArray.getJSONObject(i).getString("news_topic");
                         }
 
                         if (jsonArray.getJSONObject(i).isNull("news_intro")) {
-                            newses.news_intro = null;
+                            news.news_intro = null;
                         } else {
-                            newses.news_intro = jsonArray.getJSONObject(i).getString("news_intro");
+                            news.news_intro = jsonArray.getJSONObject(i).getString("news_intro");
                         }
 
                         if (jsonArray.getJSONObject(i).isNull("news_body")) {
-                            newses.news_body = null;
+                            news.news_body = null;
                         } else {
-                            newses.news_body = jsonArray.getJSONObject(i).getString("news_body");
+                            news.news_body = jsonArray.getJSONObject(i).getString("news_body");
                         }
 
                         if (jsonArray.getJSONObject(i).isNull("view_count")) {
-                            newses.view_count = null;
+                            news.view_count = null;
                         } else {
-                            newses.view_count = jsonArray.getJSONObject(i).getString("view_count");
+                            news.view_count = jsonArray.getJSONObject(i).getString("view_count");
                         }
 
                         if (jsonArray.getJSONObject(i).isNull("is_active")) {
-                            newses.is_active = null;
+                            news.is_active = null;
                         } else {
-                            newses.is_active = jsonArray.getJSONObject(i).getString("is_active");
+                            news.is_active = jsonArray.getJSONObject(i).getString("is_active");
                         }
 
                         if (jsonArray.getJSONObject(i).isNull("notify_date")) {
-                            newses.notify_date = null;
+                            news.notify_date = null;
                         } else {
-                            newses.notify_date = jsonArray.getJSONObject(i).getString("notify_date");
+                            news.notify_date = jsonArray.getJSONObject(i).getString("notify_date");
                         }
 
                         if (jsonArray.getJSONObject(i).isNull("news_thumbnail")) {
-                            newses.news_thumbnail = null;
+                            news.news_thumbnail = null;
                         } else {
-                            newses.news_thumbnail = jsonArray.getJSONObject(i).getString("news_thumbnail");
+                            news.news_thumbnail = jsonArray.getJSONObject(i).getString("news_thumbnail");
                         }
 
                         if (jsonArray.getJSONObject(i).isNull("news_path")) {
-                            newses.news_path = null;
+                            news.news_path = null;
                         } else {
-                            newses.news_path = jsonArray.getJSONObject(i).getString("news_path");
+                            news.news_path = jsonArray.getJSONObject(i).getString("news_path");
                         }
 
-                        newsesList.add(newses);
+                        newsList.add(news);
                     }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            asyncTaskListener.onTaskComplete("fetchNews", newsesList);
+            asyncTaskListener.onTaskComplete("fetchNews", newsList);
         }
         super.onPostExecute(result);
     }

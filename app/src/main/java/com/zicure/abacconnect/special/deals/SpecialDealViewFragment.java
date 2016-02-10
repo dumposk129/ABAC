@@ -24,11 +24,11 @@ import com.zicure.abacconnect.api.ApiConfig;
 import com.zicure.abacconnect.api.DataLayer;
 import com.zicure.abacconnect.api.DataLayerListener;
 import com.zicure.abacconnect.business.connect.BusinessConnections;
-import com.zicure.abacconnect.jobs.Jobss;
+import com.zicure.abacconnect.jobs.Jobs;
 import com.zicure.abacconnect.magazines.Magazine;
 import com.zicure.abacconnect.my.business.MyBusiness;
 import com.zicure.abacconnect.my.deal.Deals;
-import com.zicure.abacconnect.news.Newses;
+import com.zicure.abacconnect.news.News;
 import com.zicure.abacconnect.work.profile.WorkProfile;
 
 import java.text.ParseException;
@@ -43,8 +43,6 @@ public class SpecialDealViewFragment extends Fragment implements View.OnClickLis
     private TextView tvSpecialDealViewName, tvSpecialDealViewExpDate, tvSpecialDealViewConditionDetail, tvSpecialDealViewDiscountDetail;
     private ImageView imgViewSpecialDealViewShopLogo;
     private Button btnSpecialDealViewClaim;
-    private String specialDealName, specialDealPromotionDiscountDetail, specialDealConditionDetail, specialDealViewExpDate;
-    private String imgUrl;
     private int specialDealId;
     private View v;
     private List<SpecialDeals> dealsList = null;
@@ -60,7 +58,7 @@ public class SpecialDealViewFragment extends Fragment implements View.OnClickLis
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.special_deal_view, container, false);
+        return inflater.inflate(R.layout.fragment_deal_view, container, false);
     }
 
     @Override
@@ -75,23 +73,38 @@ public class SpecialDealViewFragment extends Fragment implements View.OnClickLis
         btnSpecialDealViewClaim = (Button) view.findViewById(R.id.btnSpecialDealViewClaim);
         btnSpecialDealViewClaim.setOnClickListener(this);
 
-        specialDealId = dealsList.get(position).id;
+        setData();
+    }
 
-        imgUrl = ApiConfig.IMG_URL + dealsList.get(position).deal_thumbnail;
-        Glide.with(getActivity())
-                .load(imgUrl)
-                .into(imgViewSpecialDealViewShopLogo);
+    private void setData() {
+        if (dealsList.get(position).id == null) {
 
-        specialDealName = dealsList.get(position).deal_name;
-        tvSpecialDealViewName.setText(specialDealName);
+        } else {
+            specialDealId = dealsList.get(position).id;
+        }
 
-        specialDealViewExpDate = dealsList.get(position).deal_expiry_date;
+        if (dealsList.get(position).deal_name == null) {
+            tvSpecialDealViewName.setText("");
+        } else {
+            tvSpecialDealViewName.setText(dealsList.get(position).deal_name);
+        }
+
+        if (dealsList.get(position).deal_discount == null) {
+            tvSpecialDealViewDiscountDetail.setText("");
+        } else {
+            tvSpecialDealViewDiscountDetail.setText(dealsList.get(position).deal_discount);
+        }
+
+        if (dealsList.get(position).deal_condition == null) {
+            tvSpecialDealViewConditionDetail.setText("");
+        } else {
+            tvSpecialDealViewConditionDetail.setText(dealsList.get(position).deal_condition);
+        }
 
         String convert = null;
-
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date tmpDate = simpleDateFormat.parse(specialDealViewExpDate);
+            Date tmpDate = simpleDateFormat.parse(dealsList.get(position).deal_expiry_date);
             SimpleDateFormat outputDateFormat = new SimpleDateFormat("d MMM yyyy HH:mm");
             convert = outputDateFormat.format(tmpDate);
             tvSpecialDealViewExpDate.setText(convert);
@@ -99,11 +112,14 @@ public class SpecialDealViewFragment extends Fragment implements View.OnClickLis
             e.printStackTrace();
         }
 
-        specialDealConditionDetail = dealsList.get(position).deal_condition;
-        tvSpecialDealViewConditionDetail.setText(specialDealConditionDetail);
+        if (dealsList.get(position).deal_path == null) {
 
-        specialDealPromotionDiscountDetail = dealsList.get(position).deal_discount;
-        tvSpecialDealViewDiscountDetail.setText(specialDealPromotionDiscountDetail);
+        } else {
+            String imgUrl = ApiConfig.IMG_URL + dealsList.get(position).deal_path;
+            Glide.with(ApplicationContext.getInstance().getContext())
+                    .load(imgUrl)
+                    .into(imgViewSpecialDealViewShopLogo);
+        }
     }
 
     @Override
@@ -132,35 +148,46 @@ public class SpecialDealViewFragment extends Fragment implements View.OnClickLis
     }
 
     @Override
-    public void addMagazine(List<Magazine> magazineList) {}
+    public void addMagazine(List<Magazine> magazineList) {
+    }
 
     @Override
-    public void addYears(List<String> years) {}
+    public void addYears(List<String> years) {
+    }
 
     @Override
-    public void addViewCounts(String viewCount) {}
+    public void addViewCounts(String viewCount) {
+    }
 
     @Override
-    public void fetchNews(List<Newses> newsesList) {}
+    public void fetchNews(List<News> newsList) {
+    }
 
     @Override
-    public void fetchSpecialDeals(List<SpecialDeals> specialDealList) {}
+    public void fetchSpecialDeals(List<SpecialDeals> specialDealList) {
+    }
 
     @Override
-    public void fetchBusiness(List<BusinessConnections> businessConnectionsList) {}
+    public void fetchBusiness(List<BusinessConnections> businessConnectionsList) {
+    }
 
     @Override
-    public void fetchAlumni(List<Alumni> usersList) {}
+    public void fetchAlumni(List<Alumni> usersList) {
+    }
 
     @Override
-    public void fetchJobs(List<Jobss> jobssList) {}
+    public void fetchJobs(List<Jobs> jobsList) {
+    }
 
     @Override
-    public void fetchMyDeal(List<Deals> dealsList) {}
+    public void fetchMyDeal(List<Deals> dealsList) {
+    }
 
     @Override
-    public void fetchMyWorkProfile(List<WorkProfile> workProfileList) {}
+    public void fetchMyWorkProfile(List<WorkProfile> workProfileList) {
+    }
 
     @Override
-    public void fetchMyBusiness(List<MyBusiness> myBusinessList) {}
+    public void fetchMyBusiness(List<MyBusiness> myBusinessList) {
+    }
 }

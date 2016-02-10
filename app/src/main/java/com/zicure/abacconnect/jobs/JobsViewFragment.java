@@ -21,19 +21,19 @@ public class JobsViewFragment extends Fragment {
     private String posName, company, address, date, jobNum, contactTel, keyAccountDetail, qualificationDetail;
 
     private View v;
-    private List<Jobss> jobssList;
+    private List<Jobs> jobsList;
     private int position;
 
-    public JobsViewFragment(View v, List<Jobss> listJobs, int position) {
+    public JobsViewFragment(View v, List<Jobs> listJobs, int position) {
         this.v = v;
-        this.jobssList = listJobs;
+        this.jobsList = listJobs;
         this.position = position;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.jobs_view, container, false);
+        return inflater.inflate(R.layout.fragment_jobs_view, container, false);
     }
 
     @Override
@@ -51,22 +51,47 @@ public class JobsViewFragment extends Fragment {
     }
 
     private void setData() {
-        posName = jobssList.get(position).job_position;
-        tvJobsViewPositionName.setText(posName);
 
-        address = jobssList.get(position).job_addr;
-        tvJobsViewAddressName.setText(address);
+        if (jobsList.get(position).job_position == null) {
+            tvJobsViewPositionName.setText("");
+        } else {
+            tvJobsViewPositionName.setText(jobsList.get(position).job_position);
+        }
 
-        jobNum = jobssList.get(position).job_num;
-        tvJobsViewPosition.setText(jobNum);
+        if (jobsList.get(position).job_name == null) {
+            tvJobsViewCompanyName.setText("");
+        } else {
+            tvJobsViewCompanyName.setText(jobsList.get(position).job_name); // Company Name
+        }
 
-        contactTel = jobssList.get(position).job_tel;
-        tvJobsViewContactTel.setText(contactTel);
+        if (jobsList.get(position).job_addr == null) {
+            tvJobsViewAddressName.setText("");
+        } else {
+            tvJobsViewAddressName.setText(jobsList.get(position).job_addr);
+        }
 
-        keyAccountDetail = jobssList.get(position).job_responsibility;
-        tvJobsViewKeyAccountDetail.setText(keyAccountDetail);
+        if (jobsList.get(position).job_num == null) {
+            tvJobsViewPosition.setText("");
+        } else {
+            tvJobsViewPosition.setText(jobsList.get(position).job_num);
+        }
 
-        qualificationDetail = jobssList.get(position).job_qualification;
-        tvJobsViewQualificationDetail.setText(qualificationDetail);
+        if (jobsList.get(position).job_tel == null) {
+            tvJobsViewContactTel.setText("");
+        } else {
+            tvJobsViewContactTel.setText(jobsList.get(position).job_tel);
+        }
+
+        if (jobsList.get(position).job_responsibility == null) {
+            tvJobsViewKeyAccountDetail.setText("");
+        } else {
+            tvJobsViewKeyAccountDetail.setText(jobsList.get(position).job_responsibility); // Key Accountabilities
+        }
+
+        if (jobsList.get(position).job_qualification == null) {
+            tvJobsViewQualificationDetail.setText(qualificationDetail);
+        } else {
+            tvJobsViewQualificationDetail.setText(jobsList.get(position).job_qualification);
+        }
     }
 }
