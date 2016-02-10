@@ -56,7 +56,7 @@ public class BusinessViewFragment extends Fragment {
         tvBusinessViewContactName = (TextView) view.findViewById(R.id.tvBusinessViewContactName);
         tvBusinessViewContactPosition = (TextView) view.findViewById(R.id.tvBusinessViewContactPosition);
         tvBusinessViewContactPhone = (TextView) view.findViewById(R.id.tvBusinessViewContactPhone);
-        tvBusinessViewDate = (TextView) view.findViewById(R.id.tvBusinessViewDate);
+        //tvBusinessViewDate = (TextView) view.findViewById(R.id.tvBusinessViewDate);
         imgViewBusinessViewContact = (ImageView) view.findViewById(R.id.imgViewBusinessViewContact);
         rvBusinessViewImg = (RecyclerView) view.findViewById(R.id.rvBusinessViewImg);
 
@@ -120,7 +120,7 @@ public class BusinessViewFragment extends Fragment {
                 + " " + businessDistrictNameEng + " " + businessProvinceNameEng + " " + businessZipcode;
         tvBusinessViewAddressName.setText(businessAddress);
 
-        String convert = null;
+        /*String convert = null;
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String dateCreated = businessConnectionsList.get(position).created;
@@ -132,16 +132,14 @@ public class BusinessViewFragment extends Fragment {
             }
         } catch (ParseException e) {
             e.printStackTrace();
-        }
+        }*/
 
         if (businessConnectionsList.get(position).contact_thumbnail == null) {
-            imgViewBusinessViewContact.setImageResource(R.mipmap.ic_profile_128);
+            imgViewBusinessViewContact.setImageResource(R.mipmap.ic_profile_blue_64);
         } else {
             String imgContactUrl = ApiConfig.IMG_URL + businessConnectionsList.get(position).contact_thumbnail;
-            Glide.with(ApplicationContext.getInstance().getContext())
-                    .load(imgContactUrl)
-                    .centerCrop()
-                    .into(imgViewBusinessViewContact);
+            Glide.with(ApplicationContext.getInstance().getContext()).load(imgContactUrl)
+                    .centerCrop().into(imgViewBusinessViewContact);
         }
 
         if (businessConnectionsList.get(position).contact_person == null) {

@@ -42,7 +42,7 @@ public class BusinessViewImgRecyclerAdapter extends RecyclerView.Adapter<Busines
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_business_view_recycler_items, parent, false);
+        View itemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_business_view_img_recycler_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(itemLayout);
 
@@ -54,13 +54,10 @@ public class BusinessViewImgRecyclerAdapter extends RecyclerView.Adapter<Busines
         holder.businessConnections = businessConnectionsList.get(position);
 
         if (businessConnectionsList.get(position).business_thumbnail == null) {
-            holder.rvImgViewBusinessView.setImageResource(R.mipmap.ic_profile_128);
         } else {
             String imgUrl = ApiConfig.IMG_URL + businessConnectionsList.get(position).business_thumbnail;
             Glide.with(ApplicationContext.getInstance().getContext())
-                    .load(imgUrl)
-                    .centerCrop()
-                    .into(holder.rvImgViewBusinessView);
+                    .load(imgUrl).centerCrop().into(holder.rvImgViewBusinessView);
         }
     }
 
