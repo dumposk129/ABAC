@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         Fragment fragment = null;
         int id = menuItem.getItemId();
+        String title = null;
 
         switch (id) {
             case R.id.navItem0:
@@ -97,26 +98,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.navItem1:
                 fragment = new ProfileFragment();
+                title = "Profile";
                 break;
 
             case R.id.navItem2:
                 fragment = new WorkProfileFragment();
+                title = "Work Profile";
                 break;
 
             /*case R.id.navItem3:
                 fragment = new TranscriptFragment();
+                title = "Transcript";
                 break;
 
             case R.id.navItem4:
                 fragment = new GraduatePhotoGalleryFragment();
+                title = "Graduate Photo";
                 break;*/
 
             case R.id.navItem5:
                 fragment = new MyBusinessFragment();
+                title = "My Business";
                 break;
 
             case R.id.navItem6:
                 fragment = new MyDealsFragment();
+                title = "My Deals";
                 break;
 
             case R.id.navItem7:
@@ -134,6 +141,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else {
         }
+
+        getSupportActionBar().setTitle(title);
 
         return false;
     }

@@ -51,7 +51,8 @@ public class MainPage extends Fragment {
 
     public class onClick implements View.OnClickListener {
         Fragment fragment = null;
-        private Intent intent = null;
+        Intent intent = null;
+        String title = null;
 
         @Override
         public void onClick(View v) {
@@ -59,26 +60,32 @@ public class MainPage extends Fragment {
             switch (v.getId()) {
                 case R.id.btnNews:
                     fragment = new NewsFragment();
+                    title = "News";
                     break;
 
                 case R.id.btnMagazine:
                     fragment = new MagazineFragment();
+                    title = "Magazines";
                     break;
 
                 case R.id.btnJobs:
                     fragment = new JobsClassifiedFragment();
+                    title = "Jobs";
                     break;
 
                 case R.id.btnSpecialDeals:
                     fragment = new SpecialDealsFragment();
+                    title = "Deals";
                     break;
 
                 case R.id.btnBusiness:
                     fragment = new BusinessConnectFragment();
+                    title = "Business Connect";
                     break;
 
                 case R.id.btnAlumniSearch:
                     fragment = new AlumniSearchFragment();
+                    title = "Alumni Search";
                     break;
 
                 default:
@@ -95,7 +102,10 @@ public class MainPage extends Fragment {
                 transaction.replace(R.id.main, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
-            } else {}
+            } else {
+            }
+
+            getActivity().setTitle(title);
         }
     }
 }
