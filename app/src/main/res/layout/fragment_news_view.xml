@@ -1,59 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tools">
 
     <ImageView
         android:id="@+id/imgViewNewsView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:scaleType="centerCrop" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
-
-    <TextView
-        android:id="@+id/newsViewDetailNewsTopic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/newsViewDetailNewsIntro"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="bottom|center"
-        android:gravity="bottom"
-        android:padding="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black" />
+        android:background="#80000000"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_alignParentBottom="true">
 
-    <TextView
-        android:id="@+id/newsViewDetailNewsIntro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/newsViewDetailNewsBody"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="bottom|center"
-        android:gravity="bottom"
-        android:padding="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black" />
+        <TextView
+            android:id="@+id/tvNewsViewNewsTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tvNewsViewNewsIntro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="intro intro intro intro intro intro intro intro intro intro intro intro intro intro intro intro intro"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white" />
 
 
-    <TextView
-        android:id="@+id/newsViewDetailNewsBody"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="bottom|center"
-        android:gravity="bottom"
-        android:padding="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black" />
+        <TextView
+            android:id="@+id/tvNewsViewNewsBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="intro intro intro intro intro intro intro intro intro intro intro intro intro intro intro intro intro"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 </RelativeLayout>

@@ -41,9 +41,9 @@ public class NewsViewFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         imgViewNewsView = (ImageView) view.findViewById(R.id.imgViewNewsView);
-        tvNewsViewNewsTopic = (TextView) view.findViewById(R.id.newsViewDetailNewsTopic);
-        tvNewsViewNewsIntro = (TextView) view.findViewById(R.id.newsViewDetailNewsIntro);
-        tvNewsViewNewsBody = (TextView) view.findViewById(R.id.newsViewDetailNewsBody);
+        tvNewsViewNewsTopic = (TextView) view.findViewById(R.id.tvNewsViewNewsTopic);
+        tvNewsViewNewsIntro = (TextView) view.findViewById(R.id.tvNewsViewNewsIntro);
+        tvNewsViewNewsBody = (TextView) view.findViewById(R.id.tvNewsViewNewsBody);
 
         setData();
     }
